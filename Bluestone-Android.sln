@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77903EA4-BE2B-47BD-BF2E-D40336E115A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{602A1494-4456-4454-902C-3639C2802E31}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E1A8C36E-7DF7-4835-BBD4-C4996C9A9987}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared Code", "Shared Code", "{E6B32317-BE0B-40CC-A426-8DFCD1E07122}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Targets", "Targets", "{65B11347-43C1-4539-8778-D3AD2F8E3050}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile Apps", "Mobile Apps", "{6B6367B0-FE49-4476-8331-4CE5573D9EA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile Apps", "Mobile Apps", "{E47D07C0-765A-4813-B2D3-805970AC9F8D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bluestone.Core", "Bluestone\Bluestone.Core\Bluestone.Core.csproj", "{61C04F55-0682-41C1-A6F2-4F457466DED0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bluestone.Android", "Bluestone\Bluestone.Android\Bluestone.Android.csproj", "{FEC985ED-058A-4774-B022-7CC5C1D9ABDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61C04F55-0682-41C1-A6F2-4F457466DED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61C04F55-0682-41C1-A6F2-4F457466DED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61C04F55-0682-41C1-A6F2-4F457466DED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61C04F55-0682-41C1-A6F2-4F457466DED0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEC985ED-058A-4774-B022-7CC5C1D9ABDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC985ED-058A-4774-B022-7CC5C1D9ABDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC985ED-058A-4774-B022-7CC5C1D9ABDB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FEC985ED-058A-4774-B022-7CC5C1D9ABDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEC985ED-058A-4774-B022-7CC5C1D9ABDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEC985ED-058A-4774-B022-7CC5C1D9ABDB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E6B32317-BE0B-40CC-A426-8DFCD1E07122} = {6B6367B0-FE49-4476-8331-4CE5573D9EA3}
+		{65B11347-43C1-4539-8778-D3AD2F8E3050} = {6B6367B0-FE49-4476-8331-4CE5573D9EA3}
+		{6B6367B0-FE49-4476-8331-4CE5573D9EA3} = {602A1494-4456-4454-902C-3639C2802E31}
+		{E47D07C0-765A-4813-B2D3-805970AC9F8D} = {E1A8C36E-7DF7-4835-BBD4-C4996C9A9987}
+		{61C04F55-0682-41C1-A6F2-4F457466DED0} = {E6B32317-BE0B-40CC-A426-8DFCD1E07122}
+		{FEC985ED-058A-4774-B022-7CC5C1D9ABDB} = {65B11347-43C1-4539-8778-D3AD2F8E3050}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {914B5E35-C2D4-4C7E-89DF-924361086A85}
+	EndGlobalSection
+EndGlobal
