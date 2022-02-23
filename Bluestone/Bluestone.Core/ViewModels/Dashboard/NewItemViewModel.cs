@@ -1,4 +1,5 @@
 ﻿using Bluestone.Core.Models.Dashboard;
+using Bluestone.Core.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Bluestone.Core.ViewModels.Dashboard
 {
-    public class NewItemViewModel : BaseViewModel
+    public class NewItemViewModel : ViewModelBase
     {
         private string text;
         private string description;

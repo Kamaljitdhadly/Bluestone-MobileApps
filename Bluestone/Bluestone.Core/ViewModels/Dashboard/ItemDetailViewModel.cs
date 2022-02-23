@@ -1,4 +1,5 @@
 ﻿using Bluestone.Core.Models.Dashboard;
+using Bluestone.Core.ViewModels.Base;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ using Xamarin.Forms;
 namespace Bluestone.Core.ViewModels.Dashboard
 {
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
-    public class ItemDetailViewModel : BaseViewModel
+    public class ItemDetailViewModel : ViewModelBase
     {
         private string itemId;
         private string text;

@@ -1,4 +1,5 @@
-﻿using Bluestone.Core.Views.Dashboard;
+﻿using Bluestone.Core.ViewModels.Base;
+using Bluestone.Core.Views.Dashboard;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +7,7 @@ using Xamarin.Forms;
 
 namespace Bluestone.Core.ViewModels.Auth
 {
-    public class LoginViewModel : BaseViewModel
+    public class LoginViewModel : ViewModelBase
     {
         public Command LoginCommand { get; }
 

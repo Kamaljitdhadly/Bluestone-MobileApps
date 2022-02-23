@@ -1,4 +1,5 @@
 ﻿using Bluestone.Core.Models.Dashboard;
+using Bluestone.Core.ViewModels.Base;
 using Bluestone.Core.Views.Dashboard;
 using System;
 using System.Collections.ObjectModel;
@@ -8,7 +9,7 @@ using Xamarin.Forms;
 
 namespace Bluestone.Core.ViewModels.Dashboard
 {
-    public class ItemsViewModel : BaseViewModel
+    public class ItemsViewModel : ViewModelBase
     {
         private Item _selectedItem;
 
