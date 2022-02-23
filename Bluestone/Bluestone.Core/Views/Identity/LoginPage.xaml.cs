@@ -1,13 +1,8 @@
-﻿using Bluestone.Core.ViewModels.Auth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Bluestone.Core.ViewModels.Identity;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Bluestone.Core.Views.Auth
+namespace Bluestone.Core.Views.Identity
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage

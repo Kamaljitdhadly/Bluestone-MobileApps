@@ -2,7 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:Bluestone.Core.Views.Dashboard"
-       xmlns:auth="clr-namespace:Bluestone.Core.Views.Auth"
+       xmlns:auth="clr-namespace:Bluestone.Core.Views.Identity"
        Title="Bluestone"
        x:Class="Bluestone.Core.AppLayout.AppShell">
 
