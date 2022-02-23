@@ -1,55 +1,80 @@
-﻿using Bluestone.Core.Models.Dashboard;
-using Bluestone.Core.DataServices;
-using System;
+﻿using Bluestone.Core.Services.Dialog;
+using Bluestone.Core.Services.Navigation;
+using Bluestone.Core.Services.Settings;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Bluestone.Core.ViewModels.Base
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : ExtendedBindableObject, IQueryAttributable
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        protected readonly IDialogService DialogService;
+        protected readonly INavigationService NavigationService;
 
-        bool isBusy = false;
+        private bool _isInitialized;
+
+        public bool IsInitialized
+        {
+            get => _isInitialized;
+
+            set
+            {
+                _isInitialized = value;
+                OnPropertyChanged(nameof(IsInitialized));
+            }
+        }
+
+        private bool _multipleInitialization;
+
+        public bool MultipleInitialization
+        {
+            get => _multipleInitialization;
+
+            set
+            {
+                _multipleInitialization = value;
+                OnPropertyChanged(nameof(MultipleInitialization));
+            }
+        }
+
+        private bool _isBusy;
+
         public bool IsBusy
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            get => _isBusy;
+
+            set
+            {
+                _isBusy = value;
+                OnPropertyChanged(nameof(IsBusy));
+            }
         }
 
-        string title = string.Empty;
-        public string Title
+        public ViewModelBase()
         {
-            get { return title; }
-            set { SetProperty(ref title, value); }
+            DialogService = ViewModelLocator.Resolve<IDialogService>();
+            NavigationService = ViewModelLocator.Resolve<INavigationService>();
+
+            var settingsService = ViewModelLocator.Resolve<ISettingsService>();
+
+            GlobalSetting.Instance.BaseIdentityEndpoint = settingsService.IdentityEndpointBase;
+            GlobalSetting.Instance.BaseGatewayShoppingEndpoint = settingsService.GatewayShoppingEndpointBase;
+            GlobalSetting.Instance.BaseGatewayMarketingEndpoint = settingsService.GatewayMarketingEndpointBase;
         }
 
-        protected bool SetProperty<T>(ref T backingStore, T value,
-            [CallerMemberName] string propertyName = "",
-            Action onChanged = null)
+        public virtual Task InitializeAsync(IDictionary<string, string> query)
         {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
-                return false;
-
-            backingStore = value;
-            onChanged?.Invoke();
-            OnPropertyChanged(propertyName);
-            return true;
+            return Task.FromResult(false);
         }
 
-        #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        public async void ApplyQueryAttributes(IDictionary<string, string> query)
         {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
-
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (!IsInitialized)
+            {
+                IsInitialized = true;
+                await InitializeAsync(query);
+            }
         }
-        #endregion
-
     }
 }

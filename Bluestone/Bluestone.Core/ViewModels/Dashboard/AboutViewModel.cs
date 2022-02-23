@@ -8,12 +8,12 @@ namespace Bluestone.Core.ViewModels.Dashboard
 {
     public class AboutViewModel : ViewModelBase
     {
+        public string Title = "";
         public AboutViewModel()
         {
             Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
         }
 
-        public ICommand OpenWebCommand { get; }
+        public ICommand OpenWebCommand => new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
     }
 }

@@ -5,6 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Bluestone.Core.Views.Identity.LoginPage"
+             xmlns:viewModelBase="clr-namespace:Bluestone.Core.ViewModels.Base;assembly=Bluestone.Core"
+             xmlns:viewmodels="clr-namespace:Bluestone.Core.ViewModels.Identity"
+			 viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">

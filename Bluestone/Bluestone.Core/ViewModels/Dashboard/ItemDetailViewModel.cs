@@ -1,8 +1,7 @@
-﻿using Bluestone.Core.Models.Dashboard;
+﻿using Bluestone.Core.DataServices;
 using Bluestone.Core.ViewModels.Base;
 using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Bluestone.Core.ViewModels.Dashboard
@@ -11,20 +10,34 @@ namespace Bluestone.Core.ViewModels.Dashboard
     public class ItemDetailViewModel : ViewModelBase
     {
         private string itemId;
-        private string text;
-        private string description;
+        private string _text;
+        private string _description;
+        private IDataStore _dataStore;
         public string Id { get; set; }
+
+        public ItemDetailViewModel()
+        {
+            _dataStore = DependencyService.Get<IDataStore>();
+        }
 
         public string Text
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get => _text;
+            set
+            {
+                _text = value;
+                RaisePropertyChanged(() => Text);
+            }
         }
 
         public string Description
         {
-            get => description;
-            set => SetProperty(ref description, value);
+            get => _description;
+            set
+            {
+                _description = value;
+                RaisePropertyChanged(() => Description);
+            }
         }
 
         public string ItemId
@@ -44,7 +57,7 @@ namespace Bluestone.Core.ViewModels.Dashboard
         {
             try
             {
-                var item = await DataStore.GetItemAsync(itemId);
+                var item = await _dataStore.GetItemAsync(itemId);
                 Id = item.Id;
                 Text = item.Text;
                 Description = item.Description;

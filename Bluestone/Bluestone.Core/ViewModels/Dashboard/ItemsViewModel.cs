@@ -1,33 +1,34 @@
-﻿using Bluestone.Core.Models.Dashboard;
+﻿using Bluestone.Core.DataServices;
+using Bluestone.Core.Models.Dashboard;
 using Bluestone.Core.ViewModels.Base;
 using Bluestone.Core.Views.Dashboard;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Bluestone.Core.ViewModels.Dashboard
 {
     public class ItemsViewModel : ViewModelBase
     {
+        private IDataStore _dataStore;
         private Item _selectedItem;
+        public string Title = "";
 
         public ObservableCollection<Item> Items { get; }
-        public Command LoadItemsCommand { get; }
-        public Command AddItemCommand { get; }
-        public Command<Item> ItemTapped { get; }
-
+      
         public ItemsViewModel()
         {
             Title = "Browse";
             Items = new ObservableCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-
-            ItemTapped = new Command<Item>(OnItemSelected);
-
-            AddItemCommand = new Command(OnAddItem);
+            _dataStore = DependencyService.Get<IDataStore>();
         }
+
+        public ICommand LoadItemsCommand => new Command(async () => await ExecuteLoadItemsCommand());
+        public ICommand AddItemCommand => new Command((async (item) => await OnAddItem(item)));
+        public ICommand ItemTapped => new Command<Item>((item) => OnItemSelected(item));
 
         async Task ExecuteLoadItemsCommand()
         {
@@ -36,7 +37,7 @@ namespace Bluestone.Core.ViewModels.Dashboard
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                var items = await _dataStore.GetItemsAsync(true);
                 foreach (var item in items)
                 {
                     Items.Add(item);
@@ -63,12 +64,13 @@ namespace Bluestone.Core.ViewModels.Dashboard
             get => _selectedItem;
             set
             {
-                SetProperty(ref _selectedItem, value);
+                _selectedItem = value;
+                RaisePropertyChanged(() => SelectedItem);
                 OnItemSelected(value);
             }
         }
 
-        private async void OnAddItem(object obj)
+        private async Task OnAddItem(object obj)
         {
             await Shell.Current.GoToAsync(nameof(NewItemPage));
         }

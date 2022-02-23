@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bluestone.Core.DataServices
 {
-    public class MockDataStore : IDataStore<Item>
+    public class MockDataStore : IDataStore
     {
         readonly List<Item> items;
 

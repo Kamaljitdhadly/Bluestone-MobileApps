@@ -2,8 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Bluestone.Core.Views.Dashboard.NewItemPage"
-             Shell.PresentationMode="ModalAnimated"
+             xmlns:viewModelBase="clr-namespace:Bluestone.Core.ViewModels.Base;assembly=Bluestone.Core"
+             xmlns:viewmodels="clr-namespace:Bluestone.Core.ViewModels.Dashboard"
+			 viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              Title="New Item"
+             Shell.PresentationMode="ModalAnimated"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
