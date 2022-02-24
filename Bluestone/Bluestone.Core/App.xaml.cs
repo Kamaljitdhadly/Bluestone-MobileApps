@@ -1,6 +1,7 @@
 ﻿using Bluestone.Core.DataServices;
 using Bluestone.Core.AppLayout;
 using Xamarin.Forms;
+using Bluestone.Core.AppLayout.Settings;
 
 namespace Bluestone
 {
@@ -10,8 +11,8 @@ namespace Bluestone
         public App()
         {
             InitializeComponent();
+            Dependencies.Register();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 

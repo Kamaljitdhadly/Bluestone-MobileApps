@@ -55,9 +55,9 @@ namespace Bluestone.Core.ViewModels.Base
 
         public ViewModelBase()
         {
-            DialogService = ViewModelLocator.Resolve<IDialogService>();
-            NavigationService = ViewModelLocator.Resolve<INavigationService>();
-            SettingsService = ViewModelLocator.Resolve<ISettingsService>();
+            DialogService = DependencyService.Get<IDialogService>();
+            NavigationService = DependencyService.Get<INavigationService>();
+            SettingsService = DependencyService.Get<ISettingsService>();
         }
 
         public virtual Task InitializeAsync(IDictionary<string, string> query)

@@ -99,12 +99,15 @@
     <EmbeddedResource Update="Styles\LabelStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Messages\MessagesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="AppLayout\Dependency\" />
     <Folder Include="Models\Messages\" />
     <Folder Include="Models\Identity\" />
     <Folder Include="ViewModels\Messages\" />
-    <Folder Include="Views\Messages\" />
   </ItemGroup>
 </Project>
