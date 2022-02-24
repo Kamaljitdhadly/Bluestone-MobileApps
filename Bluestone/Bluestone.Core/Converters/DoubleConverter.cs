@@ -15,8 +15,7 @@ namespace Bluestone.Core.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            double doub;
-            if (double.TryParse(value as string, out doub))
+            if (double.TryParse(value as string, out double doub))
                 return doub;
             return value;
         }

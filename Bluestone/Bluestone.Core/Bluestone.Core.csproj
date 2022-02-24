@@ -6,6 +6,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Icons\about-us.png" />
+    <None Remove="Resources\Icons\article.png" />
+    <None Remove="Resources\Icons\bookmark.png" />
+    <None Remove="Resources\Icons\catalog.png" />
+    <None Remove="Resources\Icons\chat.png" />
+    <None Remove="Resources\Icons\contact-us.png" />
+    <None Remove="Resources\Icons\dashboard.png" />
+    <None Remove="Resources\Icons\detail.png" />
+    <None Remove="Resources\Icons\ecommerce.png" />
+    <None Remove="Resources\Icons\error-empty.png" />
+    <None Remove="Resources\Icons\feedback.png" />
+    <None Remove="Resources\Icons\forms.png" />
+    <None Remove="Resources\Icons\history.png" />
+    <None Remove="Resources\Icons\log-in.png" />
+    <None Remove="Resources\Icons\navigation.png" />
+    <None Remove="Resources\Icons\notification.png" />
+    <None Remove="Resources\Icons\on-boarding.png" />
+    <None Remove="Resources\Icons\profile.png" />
+    <None Remove="Resources\Icons\setting.png" />
+    <None Remove="Resources\Icons\social.png" />
+    <None Remove="Resources\Icons\tracking.png" />
+    <None Remove="Resources\Icons\transaction.png" />
     <None Remove="Resources\Fonts\Font_Awesome_5_Free-Regular-400.otf" />
     <None Remove="Resources\Fonts\Font_Awesome_5_Free-Solid-900.otf" />
     <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
@@ -14,6 +36,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\about-us.png" />
+    <EmbeddedResource Include="Resources\Icons\article.png" />
+    <EmbeddedResource Include="Resources\Icons\bookmark.png" />
+    <EmbeddedResource Include="Resources\Icons\catalog.png" />
+    <EmbeddedResource Include="Resources\Icons\chat.png" />
+    <EmbeddedResource Include="Resources\Icons\contact-us.png" />
+    <EmbeddedResource Include="Resources\Icons\dashboard.png" />
+    <EmbeddedResource Include="Resources\Icons\detail.png" />
+    <EmbeddedResource Include="Resources\Icons\ecommerce.png" />
+    <EmbeddedResource Include="Resources\Icons\error-empty.png" />
+    <EmbeddedResource Include="Resources\Icons\feedback.png" />
+    <EmbeddedResource Include="Resources\Icons\forms.png" />
+    <EmbeddedResource Include="Resources\Icons\history.png" />
+    <EmbeddedResource Include="Resources\Icons\log-in.png" />
+    <EmbeddedResource Include="Resources\Icons\navigation.png" />
+    <EmbeddedResource Include="Resources\Icons\notification.png" />
+    <EmbeddedResource Include="Resources\Icons\on-boarding.png" />
+    <EmbeddedResource Include="Resources\Icons\profile.png" />
+    <EmbeddedResource Include="Resources\Icons\setting.png" />
+    <EmbeddedResource Include="Resources\Icons\social.png" />
+    <EmbeddedResource Include="Resources\Icons\tracking.png" />
+    <EmbeddedResource Include="Resources\Icons\transaction.png" />
     <EmbeddedResource Include="Resources\Fonts\Font_Awesome_5_Free-Regular-400.otf" />
     <EmbeddedResource Include="Resources\Fonts\Font_Awesome_5_Free-Solid-900.otf" />
     <EmbeddedResource Include="Resources\Fonts\Montserrat-Bold.ttf" />

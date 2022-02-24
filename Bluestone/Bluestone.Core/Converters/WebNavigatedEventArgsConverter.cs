@@ -8,7 +8,7 @@ namespace Bluestone.Core.Converters
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			var eventArgs = value as WebNavigatedEventArgs;
+            WebNavigatedEventArgs eventArgs = value as WebNavigatedEventArgs;
 			if (eventArgs == null)
 				throw new ArgumentException("Expected WebNavigatedEventArgs as value", "value");
 
