@@ -19,6 +19,8 @@ namespace Bluestone.Core.AppLayout.Settings
 
         private bool isGridView;
 
+        public const string ApiUrlBase = "https://admin.joinme.co.in/";
+
         static AppSettings()
         {
             Instance = new AppSettings();
