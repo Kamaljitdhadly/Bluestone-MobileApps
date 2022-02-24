@@ -1,4 +1,5 @@
-﻿using Bluestone.Core.Services.Dialog;
+﻿using Bluestone.Core.AppLayout.Settings;
+using Bluestone.Core.Services.Dialog;
 using Bluestone.Core.Services.Navigation;
 using Bluestone.Core.Services.Settings;
 using System.Collections.Generic;
@@ -58,9 +59,9 @@ namespace Bluestone.Core.ViewModels.Base
 
             var settingsService = ViewModelLocator.Resolve<ISettingsService>();
 
-            GlobalSetting.Instance.BaseIdentityEndpoint = settingsService.IdentityEndpointBase;
-            GlobalSetting.Instance.BaseGatewayShoppingEndpoint = settingsService.GatewayShoppingEndpointBase;
-            GlobalSetting.Instance.BaseGatewayMarketingEndpoint = settingsService.GatewayMarketingEndpointBase;
+            GlobalSettings.Instance.BaseIdentityEndpoint = settingsService.IdentityEndpointBase;
+            GlobalSettings.Instance.BaseGatewayShoppingEndpoint = settingsService.GatewayShoppingEndpointBase;
+            GlobalSettings.Instance.BaseGatewayMarketingEndpoint = settingsService.GatewayMarketingEndpointBase;
         }
 
         public virtual Task InitializeAsync(IDictionary<string, string> query)

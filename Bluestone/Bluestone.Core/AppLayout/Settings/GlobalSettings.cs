@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Bluestone.Core
+namespace Bluestone.Core.AppLayout.Settings
 {
-    public class GlobalSetting
+    public class GlobalSettings
     {
         public const string AzureTag = "Azure";
         public const string MockTag = "Mock";
@@ -12,7 +12,7 @@ namespace Bluestone.Core
         private string _baseGatewayShoppingEndpoint;
         private string _baseGatewayMarketingEndpoint;
 
-        public GlobalSetting()
+        public GlobalSettings()
         {
             AuthToken = "INSERT AUTHENTICATION TOKEN";
 
@@ -21,7 +21,7 @@ namespace Bluestone.Core
             BaseGatewayMarketingEndpoint = DefaultEndpoint;
         }
 
-        public static GlobalSetting Instance { get; } = new GlobalSetting();
+        public static GlobalSettings Instance { get; } = new GlobalSettings();
 
         public string BaseIdentityEndpoint
         {

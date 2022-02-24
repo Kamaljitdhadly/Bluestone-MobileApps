@@ -104,7 +104,6 @@
   <ItemGroup>
     <Folder Include="Models\Messages\" />
     <Folder Include="Models\Identity\" />
-    <Folder Include="Validators\" />
     <Folder Include="ViewModels\Messages\" />
     <Folder Include="Views\Messages\" />
   </ItemGroup>

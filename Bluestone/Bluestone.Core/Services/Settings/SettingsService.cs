@@ -1,3 +1,4 @@
+using Bluestone.Core.AppLayout.Settings;
 using Xamarin.Essentials;
 
 namespace Bluestone.Core.Services.Settings
@@ -23,9 +24,9 @@ namespace Bluestone.Core.Services.Settings
         private readonly bool AllowGpsLocationDefault = false;
         private readonly double FakeLatitudeDefault = 47.604610d;
         private readonly double FakeLongitudeDefault = -122.315752d;
-        private readonly string UrlIdentityDefault = GlobalSetting.Instance.BaseIdentityEndpoint;
-        private readonly string UrlGatewayMarketingDefault = GlobalSetting.Instance.BaseGatewayMarketingEndpoint;
-        private readonly string UrlGatewayShoppingDefault = GlobalSetting.Instance.BaseGatewayShoppingEndpoint;
+        private readonly string UrlIdentityDefault = GlobalSettings.Instance.BaseIdentityEndpoint;
+        private readonly string UrlGatewayMarketingDefault = GlobalSettings.Instance.BaseGatewayMarketingEndpoint;
+        private readonly string UrlGatewayShoppingDefault = GlobalSettings.Instance.BaseGatewayShoppingEndpoint;
         #endregion
 
         #region Settings Properties
