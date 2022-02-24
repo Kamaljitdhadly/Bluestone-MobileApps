@@ -24,15 +24,15 @@ namespace Bluestone.Core.Services.Identity
             }
 
             return string.Format("{0}?id_token_hint={1}&post_logout_redirect_uri={2}",
-                GlobalSettings.Instance.LogoutEndpoint,
+                ApiEndpoints.LogoutEndpoint,
                 token,
-                GlobalSettings.Instance.LogoutCallback);
+                ApiEndpoints.LogoutCallback);
         }
 
         public async Task<UserToken> GetTokenAsync(string code)
         {
-            string data = string.Format("grant_type=authorization_code&code={0}&redirect_uri={1}&code_verifier={2}", code, WebUtility.UrlEncode(GlobalSettings.Instance.Callback), _codeVerifier);
-            var token = await _requestProvider.PostAsync<UserToken>(GlobalSettings.Instance.TokenEndpoint, data, GlobalSettings.Instance.ClientId, GlobalSettings.Instance.ClientSecret);
+            string data = string.Format("grant_type=authorization_code&code={0}&redirect_uri={1}&code_verifier={2}", code, WebUtility.UrlEncode("ddd"), _codeVerifier);
+            var token = await _requestProvider.PostAsync<UserToken>(ApiEndpoints.LoginEndpoint , data, "dddd", "ddd");
             return token;
         }
 

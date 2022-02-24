@@ -12,6 +12,7 @@ namespace Bluestone.Core.ViewModels.Base
     {
         protected readonly IDialogService DialogService;
         protected readonly INavigationService NavigationService;
+        protected readonly ISettingsService SettingsService;
 
         private bool _isInitialized;
 
@@ -56,12 +57,7 @@ namespace Bluestone.Core.ViewModels.Base
         {
             DialogService = ViewModelLocator.Resolve<IDialogService>();
             NavigationService = ViewModelLocator.Resolve<INavigationService>();
-
-            var settingsService = ViewModelLocator.Resolve<ISettingsService>();
-
-            GlobalSettings.Instance.BaseIdentityEndpoint = settingsService.IdentityEndpointBase;
-            GlobalSettings.Instance.BaseGatewayShoppingEndpoint = settingsService.GatewayShoppingEndpointBase;
-            GlobalSettings.Instance.BaseGatewayMarketingEndpoint = settingsService.GatewayMarketingEndpointBase;
+            SettingsService = ViewModelLocator.Resolve<ISettingsService>();
         }
 
         public virtual Task InitializeAsync(IDictionary<string, string> query)

@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Bluestone.Core.Services.RequestProvider;
 
 namespace Bluestone.Core.Services.Messages
 {
-    public class MessageService
+    public class MessageService : IMessageService
     {
+        private readonly IRequestProvider _requestProvider;
+
+        public MessageService(IRequestProvider requestProvider)
+        {
+            _requestProvider = requestProvider;
+        }
     }
 }

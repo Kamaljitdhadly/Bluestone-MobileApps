@@ -10,9 +10,6 @@ namespace Bluestone.Core.Services.Settings
         private const string AccessToken = "access_token";
         private const string IdToken = "id_token";
         private const string IdUseMocks = "use_mocks";
-        private const string IdIdentityBase = "url_base";
-        private const string IdGatewayMarketingBase = "url_marketing";
-        private const string IdGatewayShoppingBase = "url_shopping";
         private const string IdUseFakeLocation = "use_fake_location";
         private const string IdLatitude = "latitude";
         private const string IdLongitude = "longitude";
@@ -24,9 +21,6 @@ namespace Bluestone.Core.Services.Settings
         private readonly bool AllowGpsLocationDefault = false;
         private readonly double FakeLatitudeDefault = 47.604610d;
         private readonly double FakeLongitudeDefault = -122.315752d;
-        private readonly string UrlIdentityDefault = GlobalSettings.Instance.BaseIdentityEndpoint;
-        private readonly string UrlGatewayMarketingDefault = GlobalSettings.Instance.BaseGatewayMarketingEndpoint;
-        private readonly string UrlGatewayShoppingDefault = GlobalSettings.Instance.BaseGatewayShoppingEndpoint;
         #endregion
 
         #region Settings Properties
@@ -47,24 +41,6 @@ namespace Bluestone.Core.Services.Settings
         {
             get => Preferences.Get(IdUseMocks, UseMocksDefault);
             set => Preferences.Set(IdUseMocks, value);
-        }
-
-        public string IdentityEndpointBase
-        {
-            get => Preferences.Get(IdIdentityBase, UrlIdentityDefault);
-            set => Preferences.Set(IdIdentityBase, value);
-        }
-
-        public string GatewayShoppingEndpointBase
-        {
-            get => Preferences.Get(IdGatewayShoppingBase, UrlGatewayShoppingDefault);
-            set => Preferences.Set(IdGatewayShoppingBase, value);
-        }
-
-        public string GatewayMarketingEndpointBase
-        {
-            get => Preferences.Get(IdGatewayMarketingBase, UrlGatewayMarketingDefault);
-            set => Preferences.Set(IdGatewayMarketingBase, value);
         }
 
         public bool UseFakeLocation
