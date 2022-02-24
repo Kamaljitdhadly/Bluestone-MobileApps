@@ -2,7 +2,7 @@
 using Bluestone.Core.AppLayout;
 using Xamarin.Forms;
 
-namespace Bluestone.Core
+namespace Bluestone
 {
     public partial class App : Application
     {
