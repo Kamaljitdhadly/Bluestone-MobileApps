@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Bluestone.Core.AppLayout.Settings
+namespace Bluestone.Core.GlobalSettings
 {
     public static class ApiEndpoints
     {

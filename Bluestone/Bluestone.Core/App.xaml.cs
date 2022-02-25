@@ -1,7 +1,7 @@
 ﻿using Bluestone.Core.DataServices;
 using Bluestone.Core.AppLayout;
 using Xamarin.Forms;
-using Bluestone.Core.AppLayout.Settings;
+using Bluestone.Core.GlobalSettings;
 
 namespace Bluestone
 {

@@ -1,4 +1,4 @@
-﻿using Bluestone.Core.AppLayout.Settings;
+﻿using Bluestone.Core.GlobalSettings;
 using Bluestone.Core.Models.Token;
 using Bluestone.Core.Services.RequestProvider;
 using System.Net;

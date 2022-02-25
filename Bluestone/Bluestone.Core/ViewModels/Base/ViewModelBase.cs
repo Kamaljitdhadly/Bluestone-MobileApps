@@ -1,5 +1,4 @@
-﻿using Bluestone.Core.AppLayout.Settings;
-using Bluestone.Core.Services.Dialog;
+﻿using Bluestone.Core.Services.Dialog;
 using Bluestone.Core.Services.Navigation;
 using Bluestone.Core.Services.Settings;
 using System.Collections.Generic;

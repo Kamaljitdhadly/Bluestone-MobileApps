@@ -105,7 +105,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AppLayout\Dependency\" />
     <Folder Include="Models\Messages\" />
     <Folder Include="Models\Identity\" />
     <Folder Include="ViewModels\Messages\" />

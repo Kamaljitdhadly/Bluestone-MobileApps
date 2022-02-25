@@ -1,4 +1,3 @@
-using Bluestone.Core.AppLayout.Settings;
 using Xamarin.Essentials;
 
 namespace Bluestone.Core.Services.Settings

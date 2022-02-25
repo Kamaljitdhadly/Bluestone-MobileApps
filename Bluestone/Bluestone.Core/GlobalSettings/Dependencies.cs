@@ -10,7 +10,7 @@ using Bluestone.Core.Services.Settings;
 using Bluestone.Core.ViewModels.Dashboard;
 using Bluestone.Core.ViewModels.Identity;
 
-namespace Bluestone.Core.AppLayout.Settings
+namespace Bluestone.Core.GlobalSettings
 {
     public static class Dependencies
     {
