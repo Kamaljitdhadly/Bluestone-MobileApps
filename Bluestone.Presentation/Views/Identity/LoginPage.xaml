@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage    xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+                xmlns:behaviors="clr-namespace:Bluestone.Presentation.Behaviors;assembly=Bluestone.Presentation"
+                xmlns:viewModelBase="clr-namespace:Bluestone.Presentation.ViewModels.Base;assembly=Bluestone.Presentation"
+                xmlns:identity="clr-namespace:Bluestone.Presentation.ViewModels.Identity"
+                x:Class="Bluestone.Presentation.Views.Identity.LoginPage"
+                viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+                x:DataType="identity:LoginViewModel"
+                Shell.FlyoutBehavior="Disabled"
+                Shell.NavBarIsVisible="False"
+                Shell.TabBarIsVisible="False">
+
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView HorizontalOptions="Center">
+                <ScrollView.VerticalOptions>
+                    <OnIdiom x:TypeArguments="LayoutOptions"
+                             Default="CenterAndExpand"
+                             Phone="FillAndExpand" />
+                </ScrollView.VerticalOptions>
+
+                <StackLayout Margin="20,22"
+                             Spacing="0"
+                             VerticalOptions="FillAndExpand"
+                             WidthRequest="{OnPlatform Default='-1',
+                                              UWP='350'}">
+
+                    <StackLayout  Spacing="10"
+                                  HorizontalOptions="Center"
+                                  VerticalOptions="Center">
+                        <!--BANNER-->
+                        <Image Aspect="Fill"
+                               WidthRequest="300"
+                               HeightRequest="120"
+                               Source="bluestonelogo.png">
+                        </Image>
+
+                        <!--  Label to display the title of this page  -->
+                        <Label FontSize="20"
+                               Margin="0,8"
+                               Style="{StaticResource TitleLabelStyle}"
+                               Text="Bluestone Bridge" />
+
+                    </StackLayout>
+
+                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+                          RowSpacing="15"
+                          VerticalOptions="CenterAndExpand">
+
+                        <!--  Entry to get email ID from user  -->
+                        <StackLayout Grid.Row="0">
+                            <Label Text="Email"
+                                   Style="{StaticResource HeaderLabelStyle}" />
+
+                            <telerikInput:RadEntry Text="{Binding UserName.Value, Mode=TwoWay}">
+                                <telerikInput:RadEntry.Style>
+                                    <OnPlatform x:TypeArguments="Style">
+                                        <On Platform="iOS, Android"
+                                            Value="{StaticResource RadEntryStyle}" />
+                                    </OnPlatform>
+                                </telerikInput:RadEntry.Style>
+                                <telerikInput:RadEntry.Behaviors>
+                                    <xct:EventToCommandBehavior EventName="TextChanged"
+                                                                Command="{Binding ValidateUserNameCommand}" />
+                                </telerikInput:RadEntry.Behaviors>
+                                <telerikInput:RadEntry.Triggers>
+                                    <DataTrigger TargetType="telerikInput:RadEntry"
+                                                 Binding="{Binding UserName.IsValid}"
+                                                 Value="False">
+                                        <Setter Property="behaviors:LineColorBehavior.LineColor"
+                                                Value="{StaticResource ErrorColor}" />
+                                    </DataTrigger>
+                                </telerikInput:RadEntry.Triggers>
+                            </telerikInput:RadEntry>
+                            <Label Text="{Binding UserName.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                   Style="{StaticResource ValidationErrorLabelStyle}" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="1">
+                            <Label Text="Password"
+                                   Style="{StaticResource HeaderLabelStyle}" />
+                            <telerikInput:RadEntry IsPassword="True"
+                                                   Text="{Binding Password.Value, Mode=TwoWay}">
+                                <telerikInput:RadEntry.Style>
+                                    <OnPlatform x:TypeArguments="Style">
+                                        <On Platform="iOS, Android"
+                                            Value="{StaticResource RadEntryStyle}" />
+                                    </OnPlatform>
+                                </telerikInput:RadEntry.Style>
+                                <telerikInput:RadEntry.Behaviors>
+                                    <xct:EventToCommandBehavior EventName="TextChanged"
+                                                                Command="{Binding ValidatePasswordCommand}" />
+                                </telerikInput:RadEntry.Behaviors>
+                                <telerikInput:RadEntry.Triggers>
+                                    <DataTrigger TargetType="telerikInput:RadEntry"
+                                                 Binding="{Binding Password.IsValid}"
+                                                 Value="False">
+                                        <Setter Property="behaviors:LineColorBehavior.LineColor"
+                                                Value="{StaticResource ErrorColor}" />
+                                    </DataTrigger>
+                                </telerikInput:RadEntry.Triggers>
+
+                            </telerikInput:RadEntry>
+                            <Label Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                   Style="{StaticResource ValidationErrorLabelStyle}" />
+                        </StackLayout>
+
+                        <!--  Forgot password link  -->
+                        <telerikInput:RadButton x:Name="ForgotPasswordLabel"
+                                                Grid.Row="2"
+                                                Command="{Binding ForgotPasswordCommand}"
+                                                HorizontalOptions="End"
+                                                Style="{StaticResource TransparentButtonStyle}"
+                                                Text="FORGOT PASSWORD?" />
+
+                        <!--  Login button  -->
+
+                        <telerikInput:RadButton Grid.Row="3"
+                                                Margin="0,16"
+                                                Text="LOG IN"
+                                                Command="{Binding SignInCommand}" />
+
+                        <!--<Label Grid.Row="4"
+                           Style="{StaticResource DescriptionLabelStyle}"
+                           Text="Or create an account using social media"
+                           TextColor="{StaticResource Gray-800}" />
+
+                    -->
+                        <!--  Login through facebook account  -->
+                        <!--
+                    <Button Grid.Row="5"
+                            Margin="0,16,0,16"
+                            BackgroundColor="{StaticResource FacebookBlue}">
+                        <buttons:SfButton.Content>
+                            <StackLayout HorizontalOptions="CenterAndExpand"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Center">
+                                <Label FontFamily="FontIcons"
+                                       FontSize="18"
+                                       Text="&#xe735;"
+                                       TextColor="{StaticResource WhiteColor}"
+                                       VerticalTextAlignment="Center" />
+                                <Label FontFamily="Montserrat-Medium"
+                                       FontSize="16"
+                                       Text="Login with Facebook"
+                                       TextColor="{StaticResource WhiteColor}" />
+                            </StackLayout>
+                        </buttons:SfButton.Content>
+                    </Button>-->
+
+                    </Grid>
+
+                    <StackLayout HorizontalOptions="Center"
+                                 Orientation="Horizontal"
+                                 Spacing="1"
+                                 VerticalOptions="End">
+
+                        <Label Style="{StaticResource DescriptionLabelStyle}"
+                               Text="Don't have an account?"
+                               TextColor="{StaticResource Gray-900}"
+                               VerticalTextAlignment="Center" />
+
+                        <!--  Sign-up button  -->
+                        <telerikInput:RadButton Command="{Binding SignUpCommand}"
+                                                Style="{StaticResource TransparentButtonStyle}"
+                                                Text="Sign Up" />
+
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+
+            <!-- INDICATOR -->
+            <ActivityIndicator Color="{StaticResource LightGreenColor}"
+                               IsRunning="{Binding IsBusy}"
+                               IsVisible="{Binding IsBusy}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center">
+                <ActivityIndicator.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS, Android"
+                            Value="100" />
+                        <On Platform="UWP, WinRT, WinPhone"
+                            Value="400" />
+                    </OnPlatform>
+                </ActivityIndicator.WidthRequest>
+            </ActivityIndicator>
+
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

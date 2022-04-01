@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Bluestone.Presentation.Views.Account.AccountPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Bluestone.Presentation.Controls"
+             xmlns:viewmodels="clr-namespace:Bluestone.Presentation.ViewModels.Account"
+             xmlns:viewModelBase="clr-namespace:Bluestone.Presentation.ViewModels.Base;assembly=Bluestone.Presentation"
+             Title="Test, Rippled - 01/01/1932"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             x:DataType="viewmodels:AccountViewModel"
+             BackgroundColor="{StaticResource Gray-100}">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource Gray-100}"
+                         Spacing="0">
+
+                <!--  Header label for account setting  -->
+                <Label Margin="16,24,0,16"
+                       FontSize="12"
+                       HorizontalOptions="FillAndExpand"
+                       LineHeight="{OnPlatform Default=-1,
+                                            Android=1.25}"
+                       Text="ACCOUNT"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center" />
+
+                <!--  Grid for Edit profile label and navigation bar icon  -->
+                <controls:TapAnimationGrid BackgroundColor="{StaticResource WhiteColor}"
+                                           ColumnDefinitions="Auto, *, Auto"
+                                           ColumnSpacing="0"
+                                           Command="{Binding EditProfileCommand}"
+                                           RowSpacing="0"
+                                           Tapped="False">
+
+                    <!--  Edit profile icon  -->
+                    <Label Grid.Column="0"
+                           Margin="16,0,0,0"
+                           Style="{StaticResource IconLabelStyle}"
+                           Text="{StaticResource AccountIcon}" />
+                    <!--  Edit profile label  -->
+                    <Label Grid.Column="1"
+                           Margin="16,12"
+                           HorizontalOptions="Start"
+                           Style="{StaticResource TitleLabelStyle}"
+                           Text="Edit Profile"
+                           VerticalOptions="Center" />
+                    <!--  Navigation icon  -->
+                    <Label Grid.Column="2"
+                           Margin="16,8"
+                           Style="{StaticResource IconLabelStyle}"
+                           Text="{StaticResource ArrowRightIcon}" />
+                </controls:TapAnimationGrid>
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+                <!--  Grid for Change password label and navigation bar icon  -->
+                <controls:TapAnimationGrid BackgroundColor="{StaticResource WhiteColor}"
+                                           ColumnDefinitions="Auto, *, Auto"
+                                           ColumnSpacing="0"
+                                           Command="{Binding ChangePasswordCommand}"
+                                           RowSpacing="0"
+                                           Tapped="False">
+
+                    <!--  Change password icon  -->
+                    <Label Grid.Column="0"
+                           Margin="16,0,0,0"
+                           Style="{StaticResource IconLabelStyle}"
+                           Text="{StaticResource AccountIcon}" />
+                    <!--  Change password label  -->
+                    <Label Grid.Column="1"
+                           Margin="16,12"
+                           HorizontalOptions="Start"
+                           Style="{StaticResource TitleLabelStyle}"
+                           Text="Change Password"
+                           VerticalOptions="Center" />
+                    <!--  Navigation icon  -->
+                    <Label Grid.Column="2"
+                           Margin="16,8"
+                           Style="{StaticResource IconLabelStyle}"
+                           Text="{StaticResource ArrowRightIcon}" />
+                </controls:TapAnimationGrid>
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+
+                <!--  Header lable for notifications  -->
+                <Label Margin="16,40,0,16"
+                       FontSize="12"
+                       HorizontalOptions="FillAndExpand"
+                       LineHeight="{OnPlatform Default=-1,
+                                            Android=1.25}"
+                       Text="SETTINGS"
+                       TextColor="{StaticResource Gray-800}"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center" />
+
+                <!--  Grid for Notifications label and switch  -->
+                <controls:TapAnimationGrid BackgroundColor="{StaticResource WhiteColor}"
+                                           ColumnDefinitions="Auto, *, Auto"
+                                           ColumnSpacing="0"
+                                           Command="{Binding SettingsCommand}"
+                                           RowSpacing="0"
+                                           Tapped="False">
+
+                    <!--  Notifications icon  -->
+                    <Label Grid.Column="0"
+                           Margin="16,0,0,0"
+                           Style="{StaticResource IconLabelStyle}"
+                           Text="{StaticResource SettingsIcon}" />
+                    <!--  Notification label  -->
+                    <Label Grid.Column="1"
+                           Margin="16,12"
+                           HorizontalOptions="Start"
+                           Style="{StaticResource TitleLabelStyle}"
+                           Text="Settings"
+                           VerticalOptions="Center" />
+                    <!--  Navigation icon  -->
+                    <Label Grid.Column="2"
+                           Margin="16,8"
+                           Style="{StaticResource IconLabelStyle}"
+                           Text="{StaticResource ArrowRightIcon}" />
+                </controls:TapAnimationGrid>
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+
+                <!--  Header label for Support setting  -->
+                <Label Margin="16,40,0,16"
+                       FontSize="12"
+                       HorizontalOptions="FillAndExpand"
+                       LineHeight="{OnPlatform Default=-1,
+                                            Android=1.25}"
+                       Text="SUPPORT"
+                       TextColor="{StaticResource Gray-800}"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center" />
+
+                <!--  Grid for Help label and navigation bar icon  -->
+                <controls:TapAnimationGrid BackgroundColor="{StaticResource WhiteColor}"
+                                           ColumnDefinitions="Auto, *, Auto"
+                                           ColumnSpacing="0"
+                                           Command="{Binding HelpCommand}"
+                                           RowSpacing="0"
+                                           Tapped="False">
+
+                    <!--  help icon  -->
+                    <Label Grid.Column="0"
+                           Margin="16,0,0,0"
+                           Style="{StaticResource IconLabelStyle}"
+                           Text="{StaticResource HelpIcon}" />
+                    <!--  Help text label  -->
+                    <Label Grid.Column="1"
+                           Margin="16,12"
+                           HorizontalOptions="Start"
+                           Style="{StaticResource TitleLabelStyle}"
+                           Text="Help"
+                           VerticalOptions="Center" />
+                    <!--  Navigation icon  -->
+                    <Label Grid.Column="2"
+                           Margin="16,8"
+                           Style="{StaticResource IconLabelStyle}"
+                           Text="{StaticResource ArrowRightIcon}" />
+                </controls:TapAnimationGrid>
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+                <!--  Grid for Terms of service label and navigation bar icon  -->
+                <controls:TapAnimationGrid BackgroundColor="{StaticResource WhiteColor}"
+                                           ColumnDefinitions="Auto, *, Auto"
+                                           ColumnSpacing="0"
+                                           Command="{Binding TermsCommand}"
+                                           RowSpacing="0"
+                                           Tapped="False">
+
+                    <!--  Terms of service icon  -->
+                    <Label Grid.Column="0"
+                           Margin="16,0,0,0"
+                           Style="{StaticResource IconLabelStyle}"
+                           Text="{StaticResource AccountIcon}" />
+                    <!--  Terms of service label  -->
+                    <Label Grid.Column="1"
+                           Margin="16,12"
+                           HorizontalOptions="Start"
+                           Style="{StaticResource TitleLabelStyle}"
+                           Text="Terms of Service"
+                           VerticalOptions="Center" />
+                    <!--  Navigation icon  -->
+                    <Label Grid.Column="2"
+                           Margin="16,8"
+                           Style="{StaticResource IconLabelStyle}"
+                           Text="{StaticResource ArrowRightIcon}" />
+                </controls:TapAnimationGrid>
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+                <!--  Logout button  -->
+                <telerikInput:RadButton Margin="20,24,20,32"
+                        Command="{Binding LogoutCommand}"
+                        Text="LOG OUT" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+
+
+
+
+
+

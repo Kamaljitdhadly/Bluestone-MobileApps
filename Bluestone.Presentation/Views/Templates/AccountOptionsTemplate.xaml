@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid x:Class="Bluestone.Presentation.Views.Templates.AccountOptionsTemplate"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Grid ColumnSpacing="0"
+          RowSpacing="0"
+          Padding="25,10,25,10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90*" />
+            <ColumnDefinition Width="10*" />
+        </Grid.ColumnDefinitions>
+
+
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Text="Profile"
+               VerticalTextAlignment="Center"
+               FontSize="20" />
+
+        <Image Grid.Row="0"
+               Grid.Column="1"
+               Source="{StaticResource AccountIconImageSource}" />
+
+    </Grid>
+</Grid>
+    
