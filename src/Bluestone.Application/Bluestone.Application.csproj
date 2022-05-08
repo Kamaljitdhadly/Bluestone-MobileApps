@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <CodeAnalysisRuleSet>Bluestone.Application.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.4.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.17.0" />
+  </ItemGroup>
+
+	
+  <ItemGroup>
+    <ProjectReference Include="..\Bluestone.Domain\Bluestone.Domain.csproj" />
+  </ItemGroup>
+
+	
+  <ItemGroup>
+    <Folder Include="Facilities\Mappings\ToModel\" />
+    <Folder Include="Identity\Mappings\ToEntity\" />
+    <Folder Include="Identity\Mappings\ToModel\" />
+    <Folder Include="Identity\Validators\" />
+    <Folder Include="Messages\Mappings\ToEntity\" />
+    <Folder Include="Messages\Mappings\ToModel\" />
+    <Folder Include="Partners\Mappings\ToEntity\" />
+    <Folder Include="Partners\Mappings\ToModel\" />
+    <Folder Include="Patients\Mappings\ToEntity\" />
+    <Folder Include="Patients\Mappings\ToModel\" />
+    <Folder Include="Users\Mappings\ToEntity\" />
+    <Folder Include="Users\Mappings\ToModel\" />
+  </ItemGroup>
+
+</Project>

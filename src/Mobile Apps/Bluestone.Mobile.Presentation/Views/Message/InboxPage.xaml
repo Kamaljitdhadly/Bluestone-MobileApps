@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Bluestone.Mobile.Presentation.Views.Message.InboxPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:viewModelBase="clr-namespace:Bluestone.Mobile.Presentation.ViewModels.Base;assembly=Bluestone.Mobile.Presentation"
+             xmlns:viewmodels="clr-namespace:Bluestone.Mobile.Presentation.ViewModels.Message"
+             xmlns:templates="clr-namespace:Bluestone.Mobile.Presentation.Views.Templates;assembly=Bluestone.Mobile.Presentation"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:telerikListViewCommands="clr-namespace:Telerik.XamarinForms.DataControls.ListView.Commands;assembly=Telerik.XamarinForms.DataControls"
+             Title="Test, Rippled - 01/01/1932"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             x:DataType="viewmodels:InboxViewModel">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="ItemBackgroundColorLight">#F8F8F8</Color>
+            <Color x:Key="ItemBackgroundColorDark">#373737</Color>
+            <Color x:Key="MainBackgroundColorLight">#DCDCDC</Color>
+            <Color x:Key="MainBackgroundColorDark">#1E1E1E</Color>
+
+
+            <Style x:Key="ListViewItemStyle"
+                   TargetType="telerikListView:ListViewItemStyle">
+                <Setter Property="BackgroundColor"
+                        Value="#DCDCDC" />
+                <Setter Property="BorderLocation"
+                        Value="All" />
+                <Setter Property="BorderWidth"
+                        Value="1" />
+            </Style>
+
+
+
+            <Style TargetType="telerikInput:RadButton"
+                   x:Key="SwipeButtonStyle">
+                <Setter Property="FontSize"
+                        Value="20" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource FontAwesomeRegular}" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="VerticalOptions"
+                        Value="FillAndExpand" />
+            </Style>
+
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="{StaticResource ChevronDownIconImageSource}"
+                     Order="Primary"
+                     Priority="0" />
+        <ToolbarItem Icon="{StaticResource SearchIconImageSource}"
+                     Order="Primary"
+                     Priority="0" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <AbsoluteLayout VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+            <Grid ColumnSpacing="0"
+                  RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--Messages-->
+                <StackLayout Grid.Row="1"
+                             Padding="10,5,15,5"
+                             Orientation="Horizontal">
+                    <telerikInput:RadAutoCompleteView Grid.Column="1"
+                                                      HorizontalOptions="FillAndExpand"
+                                                      x:Name="autoCompleteView"
+                                                      TextSearchPath="Text"
+                                                      Watermark="Search messages..."
+                                                      HeightRequest="40" />
+
+                    <telerikInput:RadButton WidthRequest="40" Command="{Binding MessageFilterOptionsCommand}">
+                        <telerikInput:RadButton.ImageSource>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}"
+                                             Glyph="{StaticResource FilterIcon}"
+                                             Color="{AppThemeBinding Dark={StaticResource DarkFontIconColor}, Light={StaticResource LightFontIconColor}}" />
+                        </telerikInput:RadButton.ImageSource>
+                    </telerikInput:RadButton>
+                </StackLayout>
+
+                <!--Messages-->
+                <Grid Grid.Row="2">
+                    <Grid IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}">
+                        <Label HorizontalOptions="Center"
+                               IsVisible="{Binding Messages, Converter={StaticResource ListIsNullOrEmptyConverter}}"
+                               Text="NO MESSAGES FOUND"
+                               VerticalOptions="Center" />
+                    </Grid>
+
+                    <telerikDataControls:RadListView x:Name="list"
+                                                     SwipeOffset="80, 0"
+                                                     SwipeThreshold="10"
+                                                     BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroundColor}, Light={StaticResource LightBackgroundColor}}"
+                                                     SelectionMode="None"
+                                                     IsItemSwipeEnabled="{Binding IsReadMode}"
+                                                     ItemsSource="{Binding Messages}"
+                                                     SelectedItemStyle="{StaticResource ListViewItemStyle}"
+                                                     PressedItemStyle="{StaticResource ListViewItemStyle}"
+                                                     AutomationId="listView">
+                        <telerikDataControls:RadListView.Commands>
+                            <telerikListViewCommands:ListViewUserCommand Id="ItemTap"
+                                                                         Command="{Binding GetMessageDetailsCommand}">
+                            </telerikListViewCommands:ListViewUserCommand>
+                        </telerikDataControls:RadListView.Commands>
+                        <telerikDataControls:RadListView.Triggers>
+                            <DataTrigger TargetType="{x:Type telerikDataControls:RadListView}"
+                                         Binding="{Binding ViewMode}"
+                                         Value="Edit">
+                                <Setter Property="SelectionMode"
+                                        Value="Multiple" />
+                                <Setter Property="SelectedItemStyle">
+                                    <Setter.Value>
+                                        <telerikListView:ListViewItemStyle BackgroundColor="{AppThemeBinding Light={StaticResource ItemBackgroundColorLight}, Dark=#686869}" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </telerikDataControls:RadListView.Triggers>
+                        <telerikDataControls:RadListView.ItemStyle>
+                            <telerikListView:ListViewItemStyle BorderLocation="Bottom"
+                                                               BorderWidth="0"
+                                                               BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroundColor}, Light={StaticResource LightBackgroundColor}}"
+                                                               BorderColor="{AppThemeBinding Dark={StaticResource DarkFontColor}, Light={StaticResource LightFontColor}}" />
+                        </telerikDataControls:RadListView.ItemStyle>
+                        <telerikDataControls:RadListView.ItemTemplate>
+                            <DataTemplate>
+                                <telerikListView:ListViewTemplateCell>
+                                    <telerikListView:ListViewTemplateCell.View>
+                                        <Grid>
+                                            <templates:MessageTemplate />
+                                        </Grid>
+                                    </telerikListView:ListViewTemplateCell.View>
+                                </telerikListView:ListViewTemplateCell>
+                            </DataTemplate>
+                        </telerikDataControls:RadListView.ItemTemplate>
+                        <telerikDataControls:RadListView.ItemSwipeContentTemplate>
+                            <DataTemplate>
+                                <Grid Grid.ColumnSpacing="0"
+                                      Grid.RowSpacing="0"
+                                      Padding="0"
+                                      Margin="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="80" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.ColumnSpacing="0"
+                                          Grid.RowSpacing="0"
+                                          BackgroundColor="#2B7DE9"
+                                          Padding="0"
+                                          Margin="0">
+                                        <telerikInput:RadButton Style="{StaticResource SwipeButtonStyle}"
+                                                                Text="{StaticResource ArchiveIcon}"
+                                                                AutomationId="FavoriteButton" />
+                                    </Grid>
+                                    <Grid Grid.Column="2"
+                                          BackgroundColor="#2B7DE9"
+                                          Grid.ColumnSpacing="0"
+                                          Grid.RowSpacing="0"
+                                          Padding="0"
+                                          Margin="0">
+                                        <telerikInput:RadButton Style="{StaticResource SwipeButtonStyle}"
+                                                                Text="{StaticResource TrashIcon}"
+                                                                AutomationId="DeleteButton" />
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+                        </telerikDataControls:RadListView.ItemSwipeContentTemplate>
+                    </telerikDataControls:RadListView>
+
+                </Grid>
+
+                <!--INDICATOR-->
+                <ActivityIndicator Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   HorizontalOptions="Center"
+                                   IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   VerticalOptions="Center"
+                                   Color="{StaticResource LightGreenColor}">
+                    <ActivityIndicator.WidthRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS, Android"
+                                Value="100" />
+                            <On Platform="UWP, WinRT, WinPhone"
+                                Value="400" />
+                        </OnPlatform>
+                    </ActivityIndicator.WidthRequest>
+                </ActivityIndicator>
+            </Grid>
+
+            <telerikInput:RadButton Command="{Binding MessageTypeOptionsCommand}"
+                                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                                    AbsoluteLayout.LayoutBounds="0.96, 0.96, 45, 45"                                   
+                                    CornerRadius="20" >
+                <telerikInput:RadButton.ImageSource>
+                    <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}"
+                                             Glyph="{StaticResource PlusIcon}"
+                                             Color="{AppThemeBinding Dark={StaticResource DarkFontIconColor}, Light={StaticResource LightFontIconColor}}" />
+                </telerikInput:RadButton.ImageSource>
+            </telerikInput:RadButton>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+
+</ContentPage>
+
